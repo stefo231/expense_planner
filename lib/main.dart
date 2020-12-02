@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/user_transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             width: double.infinity,
@@ -33,6 +34,7 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
+          UserTransactions(),
         ],
       ),
     );
