@@ -1,4 +1,5 @@
 # Flutter build
+
 variables:
   projectDirectory: 'expense_planner'
 trigger:
@@ -15,8 +16,8 @@ jobs:
     
     - task: FlutterBuild@0
       inputs:
-        target: apk
-        projectDirectory: $(projectDirectory)
+        target: 'apk'
+        projectDirectory: '.'
   
     - task: AndroidSigning@3
       displayName: 'Signing and aligning APK file(s) **/*.apk'
