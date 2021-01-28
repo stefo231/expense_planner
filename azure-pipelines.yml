@@ -17,7 +17,7 @@ jobs:
     - task: FlutterBuild@0
       inputs:
         target: 'apk'
-        projectDirectory: '.'
+        projectDirectory: $(projectDirectory)
   
     - task: AndroidSigning@3
       displayName: 'Signing and aligning APK file(s) **/*.apk'
