@@ -18,7 +18,7 @@ steps:
 - task: AndroidSigning@3
   displayName: 'Signing and aligning APK file(s) **/*.apk'
   inputs:
-    apksignerKeystoreFile: key.jks
+    apksignerKeystoreFile: appKey.jks
     apksignerKeystorePassword: 123456
     apksignerKeystoreAlias: key
     zipalign: false
