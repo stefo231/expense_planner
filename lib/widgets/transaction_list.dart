@@ -12,34 +12,47 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     return Container(
-      child: transactions.isEmpty
-          ? LayoutBuilder(builder: (ctx, constraints) {
-              return Column(
-                children: [
-                  Text(
-                    'No Transactions added yet!',
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                      height: constraints.maxHeight * 0.6,
-                      child: Image.asset('assets/images/waiting.png',
-                          fit: BoxFit.cover))
-                ],
-              );
-            })
-          : ListView.builder(
-              itemBuilder: (context, index) {
-                return TransactionItem(
-                  transaction: transactions[index],
-                  mediaQuery: mediaQuery,
-                  deleteTx: deleteTx,
+        child: transactions.isEmpty
+            ? LayoutBuilder(builder: (ctx, constraints) {
+                return Column(
+                  children: [
+                    Text(
+                      'No Transactions added yet!',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                        height: constraints.maxHeight * 0.6,
+                        child: Image.asset('assets/images/waiting.png',
+                            fit: BoxFit.cover))
+                  ],
                 );
-              },
-              itemCount: transactions.length,
-            ),
-    );
+              })
+            : ListView(
+                //? key example
+
+                children: transactions
+                    .map((tx) => TransactionItem(
+                          key: ValueKey(tx.id),
+                          transaction: tx,
+                          mediaQuery: mediaQuery,
+                          deleteTx: deleteTx,
+                        ))
+                    .toList(),
+              )
+        //? recomended list builder
+        // : ListView.builder(
+        //     itemBuilder: (context, index) {
+        //       return TransactionItem(
+        //         transaction: transactions[index],
+        //         mediaQuery: mediaQuery,
+        //         deleteTx: deleteTx,
+        //       );
+        //     },
+        //     itemCount: transactions.length,
+        //   ),
+        );
   }
 }
